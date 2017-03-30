@@ -1,0 +1,334 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+
+    <title>Map Anything</title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="theme-color" content="#0088cb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Lose The Quit">
+
+    <link rel="icon" type="image/png" href="//pbiwebprod.blob.core.windows.net/webassets/images/favicon.png">
+    <link rel="stylesheet" href="/bower_components/bootstrap-material-design/dist/css/ripples.min.css">
+    <link rel="stylesheet" href="../css/final/main.css">
+    <link rel="stylesheet" href="../css/custom.bootstrap-material-design.css">
+    <link rel="stylesheet" href="../css/custom.bootstrap.min.css">
+    <link rel="stylesheet" href="../css/compiled.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/css/mdb.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Gudea:400,400italic' rel='stylesheet' type='text/css'>
+
+    <style>
+        .theWhiteLine {
+            width: 100%;
+            margin-bottom: 50px;
+            float: left;
+            background: #fff;
+            height: 3px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+        
+        .floatRight {
+            float: right;
+        }
+        
+        .add20pxPadding {
+            padding: 20px;
+        }
+        
+        .addSomeMarginBottom {
+            margin-bottom: 25px;
+        }
+        
+        .cardImage {
+            transition: all linear 1s;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .cardImage:hover {
+            -webkit-animation: cardImageMove 50s infinite;
+            animation: cardImageMove 50s infinite;
+        }
+        
+        @-webkit-keyframes cardImageMove {
+            0% {
+                background-position: 150 0;
+            }
+            50% {
+                background-position: -50px 0;
+            }
+            100% {
+                background-position: 150 0;
+            }
+        }
+        
+        @-webkit-keyframes spotImageMove {
+            0% {
+                background-position: 150 0;
+            }
+            50% {
+                background-position: 0px 0;
+            }
+            100% {
+                background-position: 150 0;
+            }
+        }
+        
+        .cardImageOverLay {
+            width: 100%;
+            height: 100%;
+            transition: all linear .25s;
+            background: rgba(0, 0, 0, .5);
+        }
+        
+        .cardImageOverLay:hover {
+            width: 100%;
+            height: 100%;
+            transition: all linear .75s;
+            background: rgba(0, 0, 0, .25);
+        }
+        
+        .cardLink {
+            display: block;
+            color: #00a3e0;
+        }
+        
+        .cardLink:hover {
+            text-decoration: none;
+            cursor: pointer;
+            color: rgba(255, 255, 255, .90);
+            transition: all linear 1s;
+        }
+        
+        .footer {
+            position: fixed;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .footerContent {
+            position: relative;
+            width: 100%;
+            margin: 0 auto;
+            color: #fff;
+            float: right;
+        }
+        
+        .swipedemoBasicUsage .demo-swipe {
+            padding: 20px 10px;
+        }
+        
+        .swipedemoBasicUsage .no-select {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .swipeController {
+            background: black;
+        }
+    </style>
+</head>
+
+<body ng-app="mainModule" class="theBody" ng-cloak>
+
+    <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.3.0/js/mdb.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="/bower_components/bootstrap-material-design/dist/js/material.min.js"></script>
+    <script src="/bower_components/bootstrap-material-design/dist/js/ripples.min.js"></script>
+
+    <!--
+    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+    </script>
+    -->
+
+
+    <script src="../js/universal/parallax.min.js"></script>
+    <script src="../js/universal/modernizr.custom.min.js"></script>
+
+    <!-- ANGULAR IMPORTS -->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/controllers/alloyController.js"></script>
+    <script src="../js/directives/_mapDirective.js"></script>
+    <script src="../js/services/alloy.js"></script>
+    <script src="../js/universal/werkspayce.js"></script>
+    <!-- ANGULAR IMPORTS -->
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>-->
+
+
+
+    <map></map>
+
+    <style>
+        /* Optional: Makes the sample page fill the window. */
+        
+        .mapWrapper {
+            background: rgba(0, 163, 224, .75);
+            border: 10px;
+            border-style: solid;
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        @-webkit-keyframes bgMove {
+            0% {
+                background-position: 4000px 0;
+            }
+            50% {
+                background-position: -4000px 0;
+            }
+            100% {
+                background-position: 4000px 0;
+            }
+        }
+        
+        @-webkit-keyframes fgMove {
+            0% {
+                background-position: 0 0;
+            }
+            50% {
+                background-position: -1000px 0;
+            }
+            100% {
+                background-position: 0 0;
+            }
+        }
+        
+        html,
+        body {
+            color: #fff;
+            font-family: 'Roboto', sans-serif;
+            background: #1e5799;
+            /* Old browsers */
+            background: -moz-linear-gradient(top, #1e5799 0%, #27a2f4 21%, #2085c9 48%, #21b8d3 77%, #017bbc 100%);
+            /* FF3.6-15 */
+            background: -webkit-linear-gradient(top, #1e5799 0%, #27a2f4 21%, #2085c9 48%, #21b8d3 77%, #017bbc 100%);
+            /* Chrome10-25,Safari5.1-6 */
+            background: linear-gradient(to bottom, #1e5799 0%, #27a2f4 21%, #2085c9 48%, #21b8d3 77%, #017bbc 100%);
+            /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#017bbc', GradientType=0);
+            /* IE6-9 */
+            /*min-height: 3000px;*/
+            height: auto;
+            /**/
+            background: #1e5799;
+        }
+        
+        .bodyOverlay {
+            position: sticky;
+            -webkit-animation: fgMove 500s infinite;
+            animation: fgMove 500s infinite;
+            background: url('../img/customJumbotronoverlay.svg');
+            background-size: cover;
+            width: 100%;
+            height: 100%;
+            height: auto;
+            min-height: 3000px;
+        }
+        
+        .cardStyle {
+            padding: 3%;
+            color: #fff;
+            word-wrap: break-word;
+        }
+        
+        .cardOverlay1 {
+            background: rgba(0, 107, 148, .75);
+            border: 1px;
+            border-style: solid;
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        .cardOverlay2 {
+            background: rgba(0, 126, 173, .75);
+            border: 1px;
+            border-style: solid;
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        .cardOverlay3 {
+            background: rgba(0, 144, 199, .75);
+            border: 1px;
+            border-style: solid;
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        .cardOverlay4 {
+            background: rgba(0, 163, 224, .75);
+            border: 1px;
+            border-style: solid;
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        .cardOverlay5 {
+            background: rgba(0, 182, 250, .75);
+            border: 1px;
+            border-style: solid;
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        .cardOverlay6 {
+            background: rgba(20, 191, 255, .75);
+            border: 1px;
+            border-style: solid;
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        .cardOverlay7 {
+            background: rgba(46, 198, 255, .75);
+            border: 1px;
+            border-style: solid;
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        .card {
+            background: rgba(0, 107, 148, .25);
+            background: rgba(0, 107, 148, .180);
+            margin: 30px 0px;
+            border-radius: 0px;
+            color: #fff;
+        }
+        
+        .card {
+            border-color: rgba(256, 256, 256, .25);
+        }
+        
+        .searchAndRescue {
+            background: rgba(0, 163, 224, .75);
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            z-index: 1;
+        }
+        
+        .pbHeader table {
+            background: rgba(0, 107, 148, .95);
+        }
+        
+        .mainTitle {
+            color: white;
+            font-size: 21px;
+        }
+    </style>
+
+</body>
+
+</html>

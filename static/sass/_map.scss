@@ -1,0 +1,499 @@
+ $blue_1: rgba(0, 107, 148, .75);
+ $blue_2: rgba(0, 126, 173, .75);
+ $blue_3: rgba(0, 144, 199, .75);
+ $blue_4: rgba(0, 163, 224, .75);
+ $blue_5: rgba(0, 182, 250, .75);
+ $blue_6: rgba(20, 191, 255, .75);
+ $blue_7: rgba(46, 198, 255, .75);
+ /////
+ /////
+ /////
+ .customJumbotron:before {
+     /*background: none, url('../img/werkspayce-bg.png') center center;*/
+     -webkit-animation: bgColorMove 30s infinite;
+     animation: bgColorMove 30s infinite;
+     background-size: cover;
+     content: "";
+     position: fixed;
+     left: 0;
+     right: 0;
+     z-index: -100;
+     display: block;
+     width: 100%;
+     height: 100vh;
+     background-size: cover;
+     background-position: 100% 0%;
+ }
+ 
+ .customJumbotron {
+     /*background: none, url('../img/werkspayce-bg.png') center center;*/
+     -webkit-animation: bgColorMove 30s infinite;
+     animation: bgColorMove 30s infinite;
+     background-size: cover;
+     content: "";
+     position: fixed;
+     left: 0;
+     right: 0;
+     z-index: -100;
+     display: block;
+     background-size: cover;
+     background-position: 100% 0%;
+ }
+ 
+ .customJumbotronOverlay:before {
+     content: "";
+     position: fixed;
+     left: 0;
+     right: 0;
+     z-index: -100;
+     display: block;
+     width: 100%;
+     height: 100vh;
+     background-size: cover;
+     background-position: 100% 0%;
+     -webkit-animation: fgMove 400s infinite;
+     animation: fgMove 400s infinite;
+     background: url('../img/custom-overlay.svg') no-repeat;
+     background-size: cover;
+ }
+ 
+ .ghostButton {
+     width: 200px;
+     height: 50px;
+     cursor: pointer;
+     display: block;
+     margin-bottom: 25px;
+     margin-top: 25px;
+     color: #fff;
+     border: 1px solid #fff;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+     text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+     background: rgba(0, 0, 0, .5);
+ }
+ 
+ @-webkit-keyframes bgColorMove {
+     0% {
+         background: #7DB9E8;
+     }
+     50% {
+         background-color: #001848;
+     }
+     100% {
+         background: #7DB9E8;
+     }
+ }
+ 
+ @-webkit-keyframes fgMove {
+     0% {
+         background-position: 0 0;
+     }
+     50% {
+         background-position: -1000px 0;
+     }
+     100% {
+         background-position: 0 0;
+     }
+ }
+ 
+ .FLOW {
+     overflow: hidden !important;
+ }
+ 
+ .center-this {
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     padding: 5px 0px;
+     color: white;
+ }
+ 
+ .hide_text {
+     color: rgba(0, 0, 0, 0);
+ }
+ 
+ .center-this {
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+ }
+ 
+ .center-this-column {
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+ }
+ 
+ .navHeader {
+     margin-bottom: 200px;
+     display: inline-block;
+     width: 100%;
+ }
+ 
+ .serv1Data {
+     margin-top: 50px;
+ }
+ 
+ input[type=range]+.thumb {
+     position: absolute;
+     border: none;
+     height: 0;
+     width: 0;
+     border-radius: 50%;
+     background-color: #4285F4;
+     top: 10px;
+     margin-left: -6px;
+     -webkit-transform-origin: 50% 50%;
+     -moz-transform-origin: 50% 50%;
+     -ms-transform-origin: 50% 50%;
+     -o-transform-origin: 50% 50%;
+     transform-origin: 50% 50%;
+     -webkit-transform: rotate(-45deg);
+     -moz-transform: rotate(-45deg);
+     -ms-transform: rotate(-45deg);
+     -o-transform: rotate(-45deg);
+     transform: rotate(-45deg);
+ }
+ 
+ .card-title {
+     display: flex;
+     flex-direction: c;
+ }
+ 
+ .Aligner {
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+ 
+ .Aligner-item {
+     max-width: 50%;
+ }
+ 
+ .Aligner-item--top {
+     align-self: flex-start;
+ }
+ 
+ .Aligner-item--bottom {
+     align-self: flex-end;
+ }
+ 
+ .header_h1 {
+     font-size: 112px;
+     font-weight: 100;
+     color: #fff;
+ }
+ 
+ .header_h2 {
+     font-size: 56px;
+     font-weight: 100;
+     color: #fff;
+ }
+ 
+ .header_h3 {
+     font-size: 24px;
+     font-weight: 100;
+     color: #fff;
+ }
+ 
+ .header_h2 {
+     font-size: 24px;
+     font-weight: 100;
+     color: #fff;
+ }
+ 
+ .header_h6 {
+     font-size: 16px;
+     font-weight: 100;
+     color: #fff;
+ }
+ 
+ .lite_weight_content {
+     font-size: 16px;
+     font-weight: 100;
+     color: #fff;
+ }
+ 
+ .routeToolTip {
+     font-size: 16px;
+     font-weight: 100;
+     color: #000;
+ }
+ 
+ .toolTipCard {
+     max-width: 200px;
+     padding: 15px;
+     /*background: rgba(0, 0, 0, .01);*/
+ }
+ 
+ .noMargin {
+     margin: 0px;
+ }
+ 
+ .inputLat,
+ .inputLabel {
+     color: #fff;
+ }
+ 
+ .createMarkerIcon {
+     max-width: 25px;
+     max-height: 25px;
+ }
+ 
+ .createMarkerButton {
+     background: $blue_1;
+ }
+ 
+ .createRouteIcon {
+     max-width: 25px;
+     max-height: 25px;
+ }
+ 
+ .chipPicture {
+     max-width: 25px;
+     max-height: 25px;
+ }
+ 
+ .chip img {
+     margin: 0 auto;
+     margin-right: 10px;
+     float: none;
+ }
+ 
+ .col-xs-1,
+ .col-sm-1,
+ .col-md-1,
+ .col-lg-1,
+ .col-xs-2,
+ .col-sm-2,
+ .col-md-2,
+ .col-lg-2,
+ .col-xs-3,
+ .col-sm-3,
+ .col-md-3,
+ .col-lg-3,
+ .col-xs-4,
+ .col-sm-4,
+ .col-md-4,
+ .col-lg-4,
+ .col-xs-5,
+ .col-sm-5,
+ .col-md-5,
+ .col-lg-5,
+ .col-xs-6,
+ .col-sm-6,
+ .col-md-6,
+ .col-lg-6,
+ .col-xs-7,
+ .col-sm-7,
+ .col-md-7,
+ .col-lg-7,
+ .col-xs-8,
+ .col-sm-8,
+ .col-md-8,
+ .col-lg-8,
+ .col-xs-9,
+ .col-sm-9,
+ .col-md-9,
+ .col-lg-9,
+ .col-xs-10,
+ .col-sm-10,
+ .col-md-10,
+ .col-lg-10,
+ .col-xs-11,
+ .col-sm-11,
+ .col-md-11,
+ .col-lg-11,
+ .col-xs-12,
+ .col-sm-12,
+ .col-md-12,
+ .col-lg-12 {
+     padding: 0px;
+ }
+ 
+ .leSpacer {
+     margin-bottom: 0px;
+ }
+ 
+ .dashWrapper {
+     display: block;
+     width: 100%;
+     height: 100vh;
+     background: rgba(0, 131, 224, .98);
+     background: rgba(0, 131, 224, .75);
+     padding: 50px;
+     overflow: auto;
+ }
+ 
+ #map {
+     height: 100vh;
+     width: 100%;
+     opacity: .99;
+ }
+ 
+ #streetView {
+     height: 0px;
+     width: 0px;
+ }
+ 
+ #pano {
+     height: 200px;
+     width: 100%;
+ }
+ 
+ //  
+ //  
+ //  
+ //  
+ //  
+ //  
+ //  
+ //  
+ .mapWrapper {
+     background: rgba(0, 163, 224, .75);
+     border: 10px;
+     border-style: solid;
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ @-webkit-keyframes bgMove {
+     0% {
+         background-position: 4000px 0;
+     }
+     50% {
+         background-position: -4000px 0;
+     }
+     100% {
+         background-position: 4000px 0;
+     }
+ }
+ 
+ @-webkit-keyframes fgMove {
+     0% {
+         background-position: 0 0;
+     }
+     50% {
+         background-position: -1000px 0;
+     }
+     100% {
+         background-position: 0 0;
+     }
+ }
+ 
+ html,
+ body {
+     color: #fff;
+     font-family: 'Roboto', sans-serif;
+     background: #1e5799;
+     /* Old browsers */
+     background: -moz-linear-gradient(top, #1e5799 0%, #27a2f4 21%, #2085c9 48%, #21b8d3 77%, #017bbc 100%);
+     /* FF3.6-15 */
+     background: -webkit-linear-gradient(top, #1e5799 0%, #27a2f4 21%, #2085c9 48%, #21b8d3 77%, #017bbc 100%);
+     /* Chrome10-25,Safari5.1-6 */
+     background: linear-gradient(to bottom, #1e5799 0%, #27a2f4 21%, #2085c9 48%, #21b8d3 77%, #017bbc 100%);
+     /*min-height: 3000px;*/
+     height: auto;
+     /**/
+     background: #1e5799;
+ }
+ 
+ .bodyOverlay {
+     position: sticky;
+     -webkit-animation: fgMove 500s infinite;
+     animation: fgMove 500s infinite;
+     background: url('../img/customJumbotronoverlay.svg');
+     background-size: cover;
+     width: 100%;
+     height: 100%;
+     height: auto;
+     min-height: 3000px;
+ }
+ 
+ .cardStyle {
+     padding: 3%;
+     color: #fff;
+     word-wrap: break-word;
+ }
+ 
+ .cardOverlay1 {
+     background: rgba(0, 107, 148, .75);
+     border: 1px;
+     border-style: solid;
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ .cardOverlay2 {
+     background: rgba(0, 126, 173, .75);
+     border: 1px;
+     border-style: solid;
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ .cardOverlay3 {
+     background: rgba(0, 144, 199, .75);
+     border: 1px;
+     border-style: solid;
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ .cardOverlay4 {
+     background: rgba(0, 163, 224, .75);
+     border: 1px;
+     border-style: solid;
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ .cardOverlay5 {
+     background: rgba(0, 182, 250, .75);
+     border: 1px;
+     border-style: solid;
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ .cardOverlay6 {
+     background: rgba(20, 191, 255, .75);
+     border: 1px;
+     border-style: solid;
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ .cardOverlay7 {
+     background: rgba(46, 198, 255, .75);
+     border: 1px;
+     border-style: solid;
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ .card {
+     background: rgba(0, 107, 148, .25);
+     background: rgba(0, 107, 148, .180);
+     margin: 30px 0px;
+     border-radius: 0px;
+     color: #fff;
+ }
+ 
+ .card {
+     border-color: rgba(256, 256, 256, .25);
+ }
+ 
+ .searchAndRescue {
+     background: rgba(0, 163, 224, .75);
+     width: 500px;
+     height: 500px;
+     position: absolute;
+     right: 10px;
+     top: 10px;
+     z-index: 1;
+ }
+ 
+ .pbHeader table {
+     background: rgba(0, 107, 148, .95);
+ }
+ 
+ .mainTitle {
+     color: white;
+     font-size: 21px;
+ }
+ 

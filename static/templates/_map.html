@@ -1,0 +1,1386 @@
+<style>
+    .customJumbotron:before {
+        /*background: none, url('../img/werkspayce-bg.png') center center;*/
+        -webkit-animation: bgColorMove 30s infinite;
+        animation: bgColorMove 30s infinite;
+        background-size: cover;
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: -100;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: 100% 0%;
+    }
+    
+    .customJumbotron {
+        /*background: none, url('../img/werkspayce-bg.png') center center;*/
+        -webkit-animation: bgColorMove 30s infinite;
+        animation: bgColorMove 30s infinite;
+        background-size: cover;
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: -100;
+        display: block;
+        background-size: cover;
+        background-position: 100% 0%;
+    }
+    
+    .customJumbotronOverlay:before {
+        content: "";
+        position: fixed;
+        left: 0;
+        right: 0;
+        z-index: -100;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background-size: cover;
+        background-position: 100% 0%;
+        -webkit-animation: fgMove 400s infinite;
+        animation: fgMove 400s infinite;
+        background: url('../img/custom-overlay.svg') no-repeat;
+        background-size: cover;
+    }
+    
+    .ghostButton {
+        width: 200px;
+        height: 50px;
+        cursor: pointer;
+        display: block;
+        margin-bottom: 25px;
+        margin-top: 25px;
+        color: #fff;
+        border: 1px solid #fff;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        text-shadow: 0 1px 3px rgba(0, 0, 0, .25);
+        background: rgba(0, 0, 0, .5);
+    }
+    
+    @-webkit-keyframes bgColorMove {
+        0% {
+            background: #7DB9E8;
+        }
+        50% {
+            background-color: #001848;
+        }
+        100% {
+            background: #7DB9E8;
+        }
+    }
+    
+    @-webkit-keyframes fgMove {
+        0% {
+            background-position: 0 0;
+        }
+        50% {
+            background-position: -1000px 0;
+        }
+        100% {
+            background-position: 0 0;
+        }
+    }
+    
+    .bodyWrapper {
+        overbodyWrapper: hidden !important;
+    }
+    
+    .center-this {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding: 5px 0px;
+        color: white;
+    }
+    
+    .hide_text {
+        color: rgba(0, 0, 0, 0);
+    }
+    
+    .center-this {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .center-this-column {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .navHeader {
+        margin-bottom: 200px;
+        display: inline-block;
+        width: 100%;
+    }
+    
+    .serv1Data {
+        margin-top: 50px;
+    }
+    
+    .col-xs-1,
+    .col-sm-1,
+    .col-md-1,
+    .col-lg-1,
+    .col-xs-2,
+    .col-sm-2,
+    .col-md-2,
+    .col-lg-2,
+    .col-xs-3,
+    .col-sm-3,
+    .col-md-3,
+    .col-lg-3,
+    .col-xs-4,
+    .col-sm-4,
+    .col-md-4,
+    .col-lg-4,
+    .col-xs-5,
+    .col-sm-5,
+    .col-md-5,
+    .col-lg-5,
+    .col-xs-6,
+    .col-sm-6,
+    .col-md-6,
+    .col-lg-6,
+    .col-xs-7,
+    .col-sm-7,
+    .col-md-7,
+    .col-lg-7,
+    .col-xs-8,
+    .col-sm-8,
+    .col-md-8,
+    .col-lg-8,
+    .col-xs-9,
+    .col-sm-9,
+    .col-md-9,
+    .col-lg-9,
+    .col-xs-10,
+    .col-sm-10,
+    .col-md-10,
+    .col-lg-10,
+    .col-xs-11,
+    .col-sm-11,
+    .col-md-11,
+    .col-lg-11,
+    .col-xs-12,
+    .col-sm-12,
+    .col-md-12,
+    .col-lg-12 {
+        padding: 0px;
+    }
+    
+    .leSpacer {
+        margin-bottom: 0px;
+    }
+    
+    .dashWrapper {
+        display: block;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 131, 224, .98);
+        padding: 50px;
+        overbodyWrapper: auto;
+    }
+    
+    #map {
+        height: 100vh;
+        width: 100%;
+        opacity: .99;
+    }
+    
+    #streetView {
+        height: 0px;
+        width: 0px;
+    }
+    
+    #pano {
+        height: 200px;
+        width: 100%;
+    }
+    
+    input[type=range]+.thumb {
+        position: absolute;
+        border: none;
+        height: 0;
+        width: 0;
+        border-radius: 50%;
+        background-color: #4285F4;
+        top: 10px;
+        margin-left: -6px;
+        -webkit-transform-origin: 50% 50%;
+        -moz-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+        -o-transform-origin: 50% 50%;
+        transform-origin: 50% 50%;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    
+    .Aligner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .Aligner-item {
+        max-width: 50%;
+    }
+    
+    .Aligner-item--top {
+        align-self: flex-start;
+    }
+    
+    .Aligner-item--bottom {
+        align-self: flex-end;
+    }
+    
+    .header_h1 {
+        font-size: 112px;
+        font-weight: 100;
+        color: #fff;
+    }
+    
+    .header_h2 {
+        font-size: 56px;
+        font-weight: 100;
+        color: #fff;
+    }
+    
+    .header_h3 {
+        font-size: 24px;
+        font-weight: 100;
+        color: #fff;
+    }
+    
+    .header_h2 {
+        font-size: 24px;
+        font-weight: 100;
+        color: #fff;
+    }
+    
+    .header_h6 {
+        font-size: 16px;
+        font-weight: 100;
+        color: #fff;
+    }
+    
+    .lite_weight_content {
+        font-size: 16px;
+        font-weight: 100;
+        color: #fff;
+    }
+    
+    .routeToolTip {
+        font-size: 16px;
+        font-weight: 700;
+        color: #000;
+    }
+    
+    .toolTipCard {
+        max-width: 1400px;
+        /*min-width: 700px;*/
+        padding: 15px;
+        background: rgba(0, 0, 0, .000);
+    }
+    
+    .noMargin {
+        margin: 0px;
+    }
+    
+    .inputLat,
+    .inputLabel {
+        color: #fff;
+    }
+    
+    .createMarkerIcon {
+        max-width: 25px;
+        max-height: 25px;
+    }
+    
+    .createRouteIcon {
+        max-width: 25px;
+        max-height: 25px;
+    }
+    
+    .chipPicture {
+        max-width: 25px;
+        max-height: 25px;
+    }
+    
+    .chip img {
+        margin: 0 auto;
+        margin-right: 10px;
+        float: none;
+    }
+    
+    .createMarkerButton,
+    .createRouteButton,
+    .pencilButton {
+        background: rgba(46, 198, 255, .75);
+    }
+    
+    .createMarkerButton:focus,
+    .createMarkerButton:hover,
+    .createMarkerButton:active {
+        background: rgba(0, 107, 148, .75);
+    }
+    
+    .blue_1 {
+        background: rgba(0, 107, 148, .75);
+    }
+    
+    .blue_2 {
+        background: rgba(0, 126, 173, .75);
+    }
+    
+    .blue_3 {
+        background: rgba(0, 144, 199, .75);
+    }
+    
+    .blue_4 {
+        background: rgba(0, 163, 224, .75);
+    }
+    
+    .blue_5 {
+        background: rgba(0, 182, 250, .75);
+    }
+    
+    .blue_6 {
+        background: rgba(20, 191, 255, .75);
+    }
+    
+    .blue_7 {
+        background: rgba(46, 198, 255, .75);
+    }
+    
+    .colorful-select .dropdown-content,
+    .dropdown .dropdown-menu {
+        width: 100%;
+        margin: 0 auto;
+    }
+    
+    .full_width {
+        width: 100%;
+    }
+    
+    .half_width {
+        /*width: 50%;*/
+        width: 90%;
+    }
+    
+    .tooltipText {
+        margin: 10px 0px;
+        color: #000;
+    }
+    
+    pre {
+        background: rgba(0, 0, 0, 0);
+        border: none;
+    }
+    
+    .deviceMessageHeaderBox {
+        padding: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+    }
+    
+    .buttonWrapper {
+        display: inline-block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    /*.btn:not(.btn-raised),*/
+    /*.input-group-btn .btn:not(.btn-raised),*/
+    /*.btn:not(.btn-raised).btn-default,*/
+    /*.input-group-btn .btn:not(.btn-raised).btn-default {*/
+    /*    color: rgba(0, 0, 0, 0.87);*/
+    /*    width: 90%;*/
+    /*margin: 5px;*/
+    /*}*/
+</style>
+<div class="bodyWrapper">
+    <div class="row customJumbotron">
+        <div class="customJumbotronOverlay">
+            <div class="col-md-3 noPadding">
+                <div class="dashWrapper">
+
+                    <div class="chip">
+                        <img src="../img/profile-pic-blue.png" alt="Contact Person" class="chipPicture">Admin
+                    </div>
+
+                    <form class="form-horizontal">
+                        <fieldset>
+
+                            <legend>QA Testing Tool</legend>
+
+                            <div class="buttonWrapper">
+
+                                <div class="col-md-6 text-center">
+                                    <button type="button" class="btn createMarkerButton half_width">
+                                <!--<h6>Marker</h6>-->
+                                <img src="../img/Marker.png" class="createMarkerIcon"></img>
+                                </button>
+
+                                    <button type="button" class="btn pencilButton half_width">
+                                <!--<h6>Draw</h6>-->
+                                <img src="../img/pencil.svg" class="createMarkerIcon"></img>
+                                </button>
+
+                                </div>
+
+                                <div class="col-md-6 text-center">
+                                    <button type="button" class="btn createRouteButton half_width">
+                                <!--<h6>Route</h6>-->
+                                <img src="../img/Route.svg" class="createRouteIcon"></img>
+                                </button>
+                                    <button type="button" class="btn btn-danger cancelAllMapButtons half_width">
+                                <img src="../img/no.png" class="createMarkerIcon"></img>
+                                </button>
+                                </div>
+                            </div>
+
+                            </br>
+
+                            <div class="leSpacer"></div>
+                            <!--Card-->
+
+                            <!--<legend>-->
+                            <!--</legend>-->
+                            <div class="col-md-6"></div>
+
+                            <legend>
+
+                                <!--<div class="dropdown center-text">-->
+
+                                <!--    <button class="btn dropdown-toggle blue_5 " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                                <!--<img src="../img/view.png" class="createMarkerIcon"></img>-->
+                                <!--    </button>-->
+
+                                <!--    <ul class="dropdown-menu dropdown-primary dropdown">-->
+                                <!--        <center>-->
+                                <!--            <li class="dropdown-item terrain">Terrain View</li>-->
+                                <!--            <li class="dropdown-item roadmap">Roadmap View</li>-->
+                                <!--            <li class="dropdown-item satellite">Satellite View</li>-->
+                                <!--        </center>-->
+                                <!--    </ul>-->
+
+                                <!--</div>-->
+
+                            </legend>
+
+                            <!--<legend>-->
+                            <!--    <button type="button" class="btn btn-danger editViewButton">Edit View</button>-->
+                            <!--    <button type="button" class="btn btn-danger jsonViewButton">JSON View</button>-->
+                            <!--</legend>-->
+
+
+                            <!--<div class="col-md6">-->
+                            <!--    <div class="dropdown center-text">-->
+
+                            <!--        <button class="btn dropdown-toggle blue_5 " type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+                            <!--     <img src="../img/view.png" class="createMarkerIcon"></img>-->
+                            <!--        </button>-->
+
+                            <!--        <ul class="dropdown-menu dropdown-primary dropdown">-->
+                            <!--            <center>-->
+                            <!--                <li class="dropdown-item editViewButton">Edit Text View</li>-->
+                            <!--                <li class="dropdown-item jsonViewButton">JSON View</li>-->
+                            <!--                <li class="dropdown-item streetViewButton">Street View</li>-->
+                            <!--            </center>-->
+                            <!--        </ul>-->
+
+                            <!--    </div>-->
+
+                            <!--</div>-->
+
+                            <div class="card editViewCard">
+
+                                <div class="card-header  white-text blue_5 col-md-12 deviceMessageHeaderBox">
+                                    <div class='col-md-6'>
+                                        <h5 class="card-title header_h3 noMargin">Device Message</h5>
+                                    </div>
+                                    <div class='col-md-6'>
+                                        <button class="btn btn-danger send-data" disabled>
+                                       Send Message
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                                <!--<pre class="jsonViewBlock2 lite_weight_content"></pre>-->
+                                <!--Card content-->
+                                <div class="card-block">
+
+                                    <h3 class="header_h6">Device ID</h3>
+                                    <div class="md-form">
+                                        <input value="" type="text" id="formDeviceID" class="form-control lite_weight_content deviceIDInput">
+                                    </div>
+
+                                    <h3 class="header_h6">Provider</h3>
+                                    <div class="md-form">
+                                        <input value="" type="text" id="form6" class="form-control lite_weight_content providerInput">
+                                    </div>
+
+                                    <!--<a class="btn btn-danger send-data">Send Message</a>-->
+
+                                </div>
+
+                                <div class="card-block">
+                                    <pre class="jsonViewBlock lite_weight_content"></pre>
+                                </div>
+                                <!--/.Card content-->
+                            </div>
+                            <div class="card jsonCard">
+
+                                <div class="card-header  white-text blue_5">
+                                    <h5 class="card-title header_h3 noMargin">Device Messages</h5>
+                                </div>
+
+                                <!--Card content-->
+                                <div class="card-block">
+                                    <pre class="jsonViewBlock lite_weight_content"></pre>
+                                </div>
+                                <!--/.Card content-->
+                            </div>
+
+                            <div class="card streetViewCard">
+
+                                <div class="card-header   white-text  blue_7">
+                                    <h5 class="card-title header_h3 noMargin">Device Message</h5>
+                                </div>
+
+                                <!--Card content-->
+                                <!--<div class="card-block">-->
+
+                                <!--<div id="streetView" class="img-fluid"></div>-->
+                                <div id="streetView"></div>
+                                <div id="pano"></div>
+
+
+                                <!--</div>-->
+                                <!--/.Card content-->
+                            </div>
+
+                        </fieldset>
+                    </form>
+
+                </div>
+
+            </div>
+            <div class="col-md-9">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
+</script>
+<script>
+    $(() => {
+        $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyClY6HoWduZYyDzZEPqpiXTzrXQA0wrJHY&libraries=drawing,geometry,places', () => {
+
+            let flightPlanCoordinates = [];
+            let flightPathArray = [];
+
+            let marker;
+            let markerArray = [];
+
+            let totalMarkerCounter = 0;
+            let markerInFocus;
+            let latLng = {};
+            let markerIndexCounter = 0;
+            let labels = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let packagedData;
+            let equipmentData;
+            let equipDataArray = [];
+            let equipmentDataIndex = -1;
+            let initialPosition = {
+                lat: 33.74395178539481,
+                lng: -84.39097501721193
+            };
+            let routeCounter = 0;
+            let markerID;
+
+            let provider = `John Deere`;
+
+            let inputData
+
+            let markerDataArray = []
+            let createMap = () => {
+                map = new google.maps.Map(document.getElementById('map'), {
+                    center: initialPosition,
+                    zoomControl: true,
+                    mapTypeControl: true,
+                    scaleControl: true,
+                    streetViewControl: true,
+                    rotateControl: true,
+                    fullscreenControl: true,
+                    zoom: 12
+                });
+            };
+
+            let map;
+            createMap();
+
+            const drawingManager = new google.maps.drawing.DrawingManager({
+                drawingMode: google.maps.drawing.OverlayType.MARKER,
+                drawingControl: true,
+                drawingControlOptions: {
+                    position: google.maps.ControlPosition.TOP_CENTER,
+                    drawingModes: ['marker', 'circle', 'polygon', 'polyline', 'rectangle']
+                },
+                circleOptions: {
+                    fillColor: 'rgba(0, 131, 224, .50)',
+                    fillOpacity: 1,
+                    strokeWeight: 5,
+                    clickable: false,
+                    editable: true,
+                    zIndex: 1
+                },
+                polygonOptions: {
+                    fillColor: 'rgba(0, 131, 224, .50)',
+                    fillOpacity: 1,
+                    strokeWeight: 5,
+                    clickable: false,
+                    editable: true,
+                    zIndex: 1
+                },
+                rectangleOptions: {
+                    fillColor: 'rgba(0, 131, 224, .50)',
+                    fillOpacity: 1,
+                    strokeWeight: 5,
+                    clickable: false,
+                    editable: true,
+                    zIndex: 1
+                }
+            });
+
+            let markerIndexInFocus,
+                equipmentDataIndexInFocus;
+
+            const infowindow = new google.maps.InfoWindow;
+
+            // $(".terrain").click(() => map.setMapTypeId('terrain'));
+            // $(".roadmap").click(() => map.setMapTypeId('roadmap'));
+            // $(".satellite").click(() => map.setMapTypeId('satellite'));
+
+            $(".bodyWrapper").on("change", ".tooltip-form-control", event => {
+
+
+                let value = $('.dynamicValueInput').val();
+                $('.dynamicValueInputCopy').val(value);
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].timeStamp = $('.timeStampInput').val();
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].deviceLat = $('.deviceLatInput').val();
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].deviceLng = $('.deviceLngInput').val();
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].metadata = $('.metadataInput').val();
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].messageType = $('.messageTypeInput').val();
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].eventType = $('.eventTypeInput').val();
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].deviceMessage.vehicleSpeedSupported = $('.vehicleSpeedSupportedInput').val();
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].deviceMessage.vin = $('.vinInput').val();
+                equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus].deviceMessage.year = $('.yearInput').val();
+
+                changeMarkerPosition(markerInFocus, {
+                    lat: $(".deviceLatInput").val(),
+                    lng: $(".deviceLngInput").val()
+                });
+
+                console.log(`tooltip-input-has-changed`);
+
+            });
+
+
+
+
+            // $('.deviceIDInput').val(equipmentData.deviceIDInput);
+            $(".bodyWrapper").on("change", ".form-control", event => {
+
+                equipDataArray[equipmentDataIndexInFocus].map(obj => {
+                    return obj.deviceID = $('.deviceIDInput').val();
+                })
+
+                equipDataArray[equipmentDataIndexInFocus].map(obj => {
+                    return obj.provider = $('.providerInput').val();
+                })
+
+                console.log(`body-input-has-changed`);
+
+            });
+
+            $(".createMarkerButton").click(() => {
+                // ON-CREATE
+                // ON-CREATE
+                // ON-CREATE
+                $('.cancelAllMapButtons').prop("disabled", false);
+                google.maps.event.clearListeners(map, 'click');
+                markerIndexCounter = 0;
+                equipmentDataIndex++;
+
+                markerDataArray = []
+
+                console.log(`Equipment :: ${equipmentDataIndex}`)
+                console.log(`Marker :: ${markerIndexCounter}`)
+
+                inputData = {
+                    deviceID: `${provider}-LTQ${_.random(100, 999)}`,
+                    provider: provider,
+                    deviceMessage: {
+                        vehicleSpeedSupported: true,
+                        vin: `LTQ${_.random(10000000, 99999999)}`,
+                        year: `${_.random(2010, 2017)}`,
+                    },
+                    position: {},
+                    eventType: "CLOSS",
+                    messageType: `${provider}-AVL`,
+                    metadata: "Not Available",
+                    timeStamp: Number(new Date().getTime())
+                };
+
+                map.addListener("click", (event) => {
+                    infowindow.close();
+
+                    let latitude = event.latLng.lat();
+                    let longitude = event.latLng.lng();
+
+                    latLng = {
+                        lat: latitude,
+                        lng: longitude
+                    };
+
+                    // styleIcon.set("color", "#00ff00");
+                    // styleIcon.set("text", "Go");
+
+                    // equipDataArray[equipmentDataIndex][markerIndexCounter] = inputData;
+                    // equipDataArray[equipmentDataIndex][markerIndexCounter].deviceLat = latitude;
+                    // equipDataArray[equipmentDataIndex][markerIndexCounter].deviceLng = longitude;
+                    // equipDataArray[equipmentDataIndex][markerIndexCounter].position = {
+                    //     lat: latitude,
+                    //     lng: longitude
+                    // };
+
+                    // console.log(`check the time BEFORE :: ${equipDataArray[equipmentDataIndex][markerIndexCounter].timeStamp}`);
+                    // console.log(`check the time BEFORE :: ${new Date(equipDataArray[equipmentDataIndex][markerIndexCounter].timeStamp)}`);
+
+                    // let thereBeADate = new Date().getTime();
+                    // equipDataArray[equipmentDataIndex][markerIndexCounter].timeStamp = thereBeADate;
+
+                    // console.log(`check the time AFTER :: ${equipDataArray[equipmentDataIndex][markerIndexCounter].timeStamp}`);
+                    // console.log(`check the time AFTER :: ${new Date(equipDataArray[equipmentDataIndex][markerIndexCounter].timeStamp)}`);
+
+                    // console.log(equipDataArray[equipmentDataIndex]);
+
+                    markerID = `markerID :: equip${equipmentDataIndex}-mrkr${markerIndexCounter}-route${routeCounter}`;
+                    console.log(markerID);
+                    var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+                    var icons = {
+                        parking: {
+                            icon: iconBase + 'parking_lot_maps.png'
+                        },
+                        library: {
+                            icon: iconBase + 'library_maps.png'
+                        },
+                        info: {
+                            icon: iconBase + 'info-i_maps.png'
+                        }
+                    };
+                    marker = new google.maps.Marker({
+                        map: map,
+                        draggable: true,
+                        position: latLng,
+                        label: labels[markerIndexCounter % labels.length],
+                        animation: google.maps.Animation.DROP,
+
+                        // icon: icons.info.icon,
+                    });
+
+                    markerIndexInFocus = markerIndexCounter;
+                    equipmentDataIndexInFocus = equipmentDataIndex;
+                    markerInFocus = marker;
+                    markerArray[markerIndexCounter] = marker;
+
+                    flightPlanCoordinates[markerIndexCounter] = latLng;
+
+                    let obj = {};
+
+                    obj = {
+                        deviceID: inputData.deviceID,
+                        provider: inputData.provider,
+                        deviceMessage: {
+                            vehicleSpeedSupported: inputData.deviceMessage.vehicleSpeedSupported,
+                            vin: inputData.deviceMessage.vin,
+                            year: inputData.deviceMessage.year
+                        },
+                        position: {
+                            lat: latitude,
+                            lng: longitude
+                        },
+                        eventType: inputData.eventType,
+                        messageType: inputData.messageType,
+                        metadata: inputData.metadata,
+                        timeStamp: Number(new Date().getTime())
+                    }
+
+                    markerDataArray.push(obj);
+                    equipDataArray[equipmentDataIndex] = markerDataArray;
+
+                    // console.log(`the obj ::`)
+                    // console.log(markerDataArray[markerIndexCounter])
+                    // console.log(`the array of objs ::`)
+                    // console.log(markerDataArray)
+                    // console.log(equipDataArray)
+
+                    packagedData = {
+                        deviceID: markerDataArray[0].deviceID,
+                        provider: markerDataArray[0].provider,
+                        vehicleSpeedSupported: markerDataArray[0].deviceMessage.vehicleSpeedSupported,
+                        vin: markerDataArray[0].deviceMessage.vin,
+                        year: markerDataArray[0].deviceMessage.year,
+                        eventType: markerDataArray[0].eventType,
+                        messageType: markerDataArray[0].messageType,
+                        timeStamp: markerDataArray[0].timeStamp,
+                        deviceLat: markerDataArray[markerIndexCounter].position.lat,
+                        deviceLng: markerDataArray[markerIndexCounter].position.lng,
+                        metadata: markerDataArray[markerIndexCounter].metadata,
+                        position: markerDataArray[markerIndexCounter].position
+                    };
+
+                    updateDom(packagedData);
+
+                    // this may be slowing things down
+                    // initializeStreetView(latLng);
+
+                    markerListener(marker, markerIndexCounter, equipmentDataIndex, routeCounter);
+
+                    // console.log(`${latitude}, ${longitude}`);
+
+                    totalMarkerCounter++;
+                    markerIndexCounter++;
+                });
+
+            });
+
+            $(".createRouteButton").click(() => {
+                routeCounter++;
+                console.log(`markerArray.length :: ${markerArray.length}`);
+                let markerCluster = new MarkerClusterer(map, markerArray, {
+                    imagePath: 'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m'
+                });
+
+                createFlightPlanLine(flightPlanCoordinates, map)
+                flightPlanCoordinates = []
+                markerIndexCounter = 0
+
+            });
+
+            $(".pencilButton").click(() => {
+                setMapButtonsOff();
+
+                drawingManager.setOptions({
+                    drawingControl: true
+                });
+
+                drawingManager.setMap(map);
+
+                // var triangleCoords = [{
+                //     lat: 25.774,
+                //     lng: -80.19
+                // }, {
+                //     lat: 18.466,
+                //     lng: -66.118
+                // }, {
+                //     lat: 32.321,
+                //     lng: -64.757
+                // }];
+
+                // var bermudaTriangle = new google.maps.Polygon({
+                //     paths: triangleCoords
+                // });
+
+            });
+
+            $(".cancelAllMapButtons").click(() => {
+                setMapButtonsOn();
+
+                google.maps.event.clearListeners(map, 'click');
+
+                flightPlanCoordinates = [];
+
+                drawingManager.setOptions({
+                    drawingControl: false
+                });
+
+                drawingManager.setDrawingMode(null);
+
+                markerArray.map(marker => marker.setMap(null));
+
+                let flightPath = new google.maps.Polyline({
+                    path: [],
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: .5,
+                    strokeWeight: 5
+                });
+
+                flightPathArray.map(flightPath => {
+                    flightPath.setMap(null);
+                });
+
+                markerArray = []
+                markerIndexCounter = 0
+                createMap()
+            });
+
+            markerListener = (marker, index, equipmentIndex, rtrCounter) => {
+
+                marker.addListener('click', ((marker, index) => event => {
+                    markerInFocus = marker;
+                    markerIndexInFocus = index;
+                    equipmentDataIndexInFocus = equipmentIndex;
+
+                    latitude = event.latLng.lat();
+                    longitude = event.latLng.lng();
+
+                    console.log(`markerID :: equip${equipmentIndex}-mrkr${index}-route${routeCounter}`);
+
+                    equipDataArray[equipmentIndex][index].deviceLat = latitude;
+                    equipDataArray[equipmentIndex][index].deviceLng = longitude;
+                    equipDataArray[equipmentDataIndex][index].position = {
+                        lat: latitude,
+                        lng: longitude
+                    };
+
+                    packagedData = {
+                        deviceID: equipDataArray[equipmentIndex][index].deviceID,
+                        provider: equipDataArray[equipmentIndex][index].provider,
+                        vehicleSpeedSupported: equipDataArray[equipmentIndex][index].deviceMessage.vehicleSpeedSupported,
+                        vin: equipDataArray[equipmentIndex][index].deviceMessage.vin,
+                        year: equipDataArray[equipmentIndex][index].deviceMessage.year,
+                        eventType: equipDataArray[equipmentIndex][index].eventType,
+                        messageType: equipDataArray[equipmentIndex][index].messageType,
+                        timeStamp: equipDataArray[equipmentIndex][index].timeStamp,
+                        deviceLat: equipDataArray[equipmentIndex][index].position.lat,
+                        deviceLng: equipDataArray[equipmentIndex][index].position.lng,
+                        metadata: equipDataArray[equipmentIndex][index].metadata,
+                        position: equipDataArray[equipmentIndex][index].position
+                    };
+
+                    updateDom(packagedData);
+
+                    toolTipData = {
+                        timeStamp: equipDataArray[equipmentIndex][index].timeStamp,
+                        deviceLat: equipDataArray[equipmentIndex][index].deviceLat,
+                        deviceLng: equipDataArray[equipmentIndex][index].deviceLng,
+                        metadata: equipDataArray[equipmentIndex][index].metadata,
+                        eventType: equipDataArray[equipmentIndex][index].eventType,
+                        messageType: equipDataArray[equipmentIndex][index].messageType,
+                        vehicleSpeedSupported: equipDataArray[equipmentIndex][index].deviceMessage.vehicleSpeedSupported,
+                        vin: equipDataArray[equipmentIndex][index].deviceMessage.vin,
+                        year: equipDataArray[equipmentIndex][index].deviceMessage.year,
+                    };
+
+                    initializeStreetView({
+                        lat: latitude,
+                        lng: longitude
+                    });
+
+                    console.log(JSON.stringify(toolTipData, null, 2));
+
+                    infowindow.setContent(createToolTip(toolTipData));
+                    infowindow.open(map, marker);
+
+
+                    // infowindow.addListener('content_changed', (infowindow => event => {
+                    //     infowindow.close();
+
+                    //     equipDataArray[equipmentDataIndexInFocus].map(obj => {
+                    //         return obj.timeStamp = $('.timeStampInput').val();
+                    //     })
+
+                    //     equipDataArray[equipmentDataIndexInFocus].map(obj => {
+                    //         return obj.metadata = $('.metadataInput').val();
+                    //     })
+                    //     equipDataArray[equipmentDataIndexInFocus].map(obj => {
+                    //         return obj.eventType = $('.eventTypeInput').val();
+                    //     })
+                    //     equipDataArray[equipmentDataIndexInFocus].map(obj => {
+                    //         return obj.vehicleSpeedSupported = $('.vehicleSpeedSupportedInput').val();
+                    //     })
+                    //     equipDataArray[equipmentDataIndexInFocus].map(obj => {
+                    //         return obj.vin = $('.vinInput').val();
+                    //     })
+                    //     equipDataArray[equipmentDataIndexInFocus].map(obj => {
+                    //         return obj.year = $('.yearInput').val();
+                    //     })
+
+                    //     toolTipData = {
+                    //         timeStamp: equipDataArray[equipmentIndex][index].timeStamp,
+                    //         deviceLat: equipDataArray[equipmentIndex][index].deviceLat,
+                    //         deviceLng: equipDataArray[equipmentIndex][index].deviceLng,
+                    //         metadata: equipDataArray[equipmentIndex][index].metadata,
+                    //         eventType: equipDataArray[equipmentIndex][index].eventType,
+                    //         messageType: equipDataArray[equipmentIndex][index].messageType,
+                    //         vehicleSpeedSupported: equipDataArray[equipmentIndex][index].deviceMessage.vehicleSpeedSupported,
+                    //         vin: equipDataArray[equipmentIndex][index].deviceMessage.vin,
+                    //         year: equipDataArray[equipmentIndex][index].deviceMessage.year,
+                    //     };
+
+                    //     // infowindow.setContent(createToolTip(toolTipData));
+                    // })(infowindow));
+
+                })(marker, index));
+
+                marker.addListener('dragend', ((marker, index) => event => {
+                    markerInFocus = marker;
+                    markerIndexInFocus = index;
+                    equipmentDataIndexInFocus = equipmentIndex;
+
+                    latitude = event.latLng.lat();
+                    longitude = event.latLng.lng();
+
+                    equipDataArray[equipmentIndex][index].deviceLat = latitude;
+                    equipDataArray[equipmentIndex][index].deviceLng = longitude;
+                    equipDataArray[equipmentDataIndex][index].position = {
+                        lat: latitude,
+                        lng: longitude
+                    };
+
+                    packagedData = {
+                        deviceID: equipDataArray[equipmentIndex][index].deviceID,
+                        provider: equipDataArray[equipmentIndex][index].provider,
+                        vehicleSpeedSupported: equipDataArray[equipmentIndex][index].deviceMessage.vehicleSpeedSupported,
+                        vin: equipDataArray[equipmentIndex][index].deviceMessage.vin,
+                        year: equipDataArray[equipmentIndex][index].deviceMessage.year,
+                        eventType: equipDataArray[equipmentIndex][index].eventType,
+                        messageType: equipDataArray[equipmentIndex][index].messageType,
+                        timeStamp: equipDataArray[equipmentIndex][index].timeStamp,
+                        deviceLat: equipDataArray[equipmentIndex][index].position.lat,
+                        deviceLng: equipDataArray[equipmentIndex][index].position.lng,
+                        metadata: equipDataArray[equipmentIndex][index].metadata,
+                        position: equipDataArray[equipmentIndex][index].position
+                    };
+
+                    updateDom(packagedData);
+
+                    toolTipData = {
+                        timeStamp: equipDataArray[equipmentIndex][index].timeStamp,
+                        deviceLat: equipDataArray[equipmentIndex][index].deviceLat,
+                        deviceLng: equipDataArray[equipmentIndex][index].deviceLng,
+                        metadata: equipDataArray[equipmentIndex][index].metadata,
+                        eventType: equipDataArray[equipmentIndex][index].eventType,
+                        messageType: equipDataArray[equipmentIndex][index].messageType,
+                        vehicleSpeedSupported: equipDataArray[equipmentIndex][index].deviceMessage.vehicleSpeedSupported,
+                        vin: equipDataArray[equipmentIndex][index].deviceMessage.vin,
+                        year: equipDataArray[equipmentIndex][index].deviceMessage.year,
+                    };
+
+                    infowindow.setContent(createToolTip(toolTipData));
+
+                    // infowindow.addListener('position_changed', (infowindow => event => {
+                    //     infowindow.setContent(createToolTip(toolTipData));
+                    // })(infowindow));
+
+                    initializeStreetView({
+                        lat: latitude,
+                        lng: longitude
+                    });
+                    // console.log(`${latitude}, ${longitude}`);
+                })(marker, index));
+
+                // toolTipData = {
+                //     timeStamp: equipDataArray[equipmentIndex][index].timeStamp,
+                //     deviceLat: equipDataArray[equipmentIndex][index].deviceLat,
+                //     deviceLng: equipDataArray[equipmentIndex][index].deviceLng,
+                //     metadata: equipDataArray[equipmentIndex][index].metadata,
+                //     eventType: equipDataArray[equipmentIndex][index].eventType,
+                //     messageType: equipDataArray[equipmentIndex][index].messageType,
+                //     vehicleSpeedSupported: equipDataArray[equipmentIndex][index].deviceMessage.vehicleSpeedSupported,
+                //     vin: equipDataArray[equipmentIndex][index].deviceMessage.vin,
+                //     year: equipDataArray[equipmentIndex][index].deviceMessage.year,
+                // };
+
+                infowindow.addListener('position_changed', (infowindow => event => {
+                    infowindow.setContent(createToolTip(toolTipData));
+                })(infowindow));
+
+                // marker.addListener('position_changed', ((marker, index) => event => {
+                //     markerInFocus = marker;
+                //     markerIndexInFocus = index;
+                //     equipmentDataIndexInFocus = equipmentIndex;
+
+                //     latitude = event.latLng.lat();
+                //     longitude = event.latLng.lng();
+
+                //     equipDataArray[equipmentIndex][index].deviceLat = latitude;
+                //     equipDataArray[equipmentIndex][index].deviceLng = longitude;
+                //     equipDataArray[equipmentDataIndex][index].position = {
+                //         lat: latitude,
+                //         lng: longitude
+                //     };
+
+                //     packagedData = {
+                //         deviceID: equipDataArray[equipmentIndex][index].deviceID,
+                //         provider: equipDataArray[equipmentIndex][index].provider,
+                //         deviceLat: equipDataArray[equipmentIndex][index].deviceLat,
+                //         deviceLng: equipDataArray[equipmentIndex][index].deviceLng
+                //     };
+
+                //     toolTipData = {
+                //         timeStamp: equipDataArray[equipmentIndex][index].timeStamp,
+                //         deviceLat: equipDataArray[equipmentIndex][index].deviceLat,
+                //         deviceLng: equipDataArray[equipmentIndex][index].deviceLng,
+                //         metadata: equipDataArray[equipmentIndex][index].metadata,
+                //         eventType: equipDataArray[equipmentIndex][index].eventType,
+                //         messageType: equipDataArray[equipmentIndex][index].messageType,
+                //         vehicleSpeedSupported: equipDataArray[equipmentIndex][index].deviceMessage.vehicleSpeedSupported,
+                //         vin: equipDataArray[equipmentIndex][index].deviceMessage.vin,
+                //         year: equipDataArray[equipmentIndex][index].deviceMessage.year
+                //     };
+
+                //     updateDom(packagedData);
+
+                //     infowindow.setContent(createToolTip(toolTipData));
+
+                //     infowindow.addListener('content_changed', (infowindow => event => {
+                //         infowindow.setContent(createToolTip(toolTipData));
+                //     })(infowindow));
+
+                // })(marker, index));
+
+            };
+
+            createFlightPlanLine = (coords, map) => {
+
+                let flightPath = new google.maps.Polyline({
+                    path: coords,
+                    geodesic: true,
+                    strokeColor: '#FF0000',
+                    strokeOpacity: .5,
+                    strokeWeight: 5
+                });
+
+                flightPath.setMap(map);
+                flightPathArray.push(flightPath);
+
+            };
+
+            changeMarkerPosition = (marker, obj) => {
+                let latlng = new google.maps.LatLng(obj.lat, obj.lng);
+                marker.setPosition(latlng);
+            };
+
+            updateDom = obj => {
+                $(".providerInput").val(obj.provider);
+                $(".timeStampInput").val(obj.timeStamp);
+                $(".deviceLatInput").val(obj.deviceLat);
+                $(".deviceLngInput").val(obj.deviceLng);
+                $(".deviceIDInput").val(obj.deviceID);
+                $(".jsonViewBlock2").html(JSON.stringify(obj, null, 2));
+                $(".equipmentDataIndex").html(obj.equipmentDataIndex);
+
+
+                let equipmentDataTOSendToJSONView = {
+                    deviceID: obj.deviceID,
+                    timeStamp: obj.timeStamp,
+                    provider: obj.provider,
+                    deviceLat: obj.deviceLat,
+                    deviceLng: obj.deviceLng,
+                    metadata: obj.metadata,
+                    eventType: obj.eventType,
+                    messageType: obj.messageType,
+                    vehicleSpeedSupported: obj.vehicleSpeedSupported,
+                    vin: obj.vin,
+                    year: obj.year,
+                }
+
+
+                $('.jsonViewBlock').html(JSON.stringify(equipmentDataTOSendToJSONView, null, 2));
+
+            }
+
+            $('.send-data').click(() => {
+
+                console.log(JSON.stringify(equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus], null, 2));
+
+                let obj = equipDataArray[equipmentDataIndexInFocus][markerIndexInFocus];
+
+                let sendThisData = {
+                    deviceID: obj.deviceID,
+                    provider: obj.provider,
+                    insertionTime: Number(new Date().getTime()),
+                    timeStamp: obj.timeStamp,
+                    deviceLat: obj.deviceLat,
+                    deviceLng: obj.deviceLng,
+                    deviceMessage: obj.deviceMessage,
+                    position: obj.position,
+                    eventType: obj.eventType,
+                    messageType: obj.messageType,
+                    metadata: obj.metadata,
+
+                }
+
+                console.log(JSON.stringify(sendThisData, null, 2));
+
+
+                $.ajax({
+                    type: "POST",
+                    url: "/send-data",
+                    data: sendThisData,
+
+                }).done(data => {
+                    // alert(JSON.stringify(data, null, 2));
+                });
+            })
+
+
+        });
+
+        createFlightPlanLine = (coords, map) => {
+
+            let flightPath = new google.maps.Polyline({
+                path: coords,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: .5,
+                strokeWeight: 5
+            });
+
+            flightPath.setMap(map);
+            flightPathArray.push(flightPath)
+        };
+
+        initializeStreetView = obj => {
+
+            let streetViewPosition = {
+                lat: obj.lat,
+                lng: obj.lng
+            };
+
+            map = new google.maps.Map(document.getElementById('streetView'), {
+                center: streetViewPosition,
+                zoom: 14
+            });
+
+            panorama = new google.maps.StreetViewPanorama(
+                document.getElementById('pano'), {
+                    position: streetViewPosition,
+                    pov: {
+                        heading: 34,
+                        pitch: 10
+                    }
+                });
+
+            map.setStreetView(panorama);
+        }
+
+        resetTabViews = obj => {
+            $('.editViewCard').css("display", "none");
+            $('.jsonCard').css("display", "none");
+            $('.streetViewCard').css("display", "none");
+        }
+
+        setMapButtonsOn = () => {
+            $('.createRouteButton').prop("disabled", false);
+            $('.createMarkerButton').prop("disabled", false);
+            $('.pencilButton').prop("disabled", false);
+            $('.cancelAllMapButtons').prop("disabled", true);
+        }
+
+        setMapButtonsOff = () => {
+            $('.createRouteButton').prop("disabled", true);
+            $('.createMarkerButton').prop("disabled", true);
+            $('.pencilButton').prop("disabled", true);
+            $('.cancelAllMapButtons').prop("disabled", false);
+        }
+
+        renderInitialInputsAndViews = () => {
+            setMapButtonsOn();
+            resetTabViews();
+
+            // $(".timeStampInput").val(new Date().getTime());
+            // $(".deviceLatInput").val(33.74395178539481);
+            // $(".deviceLngInput").val(-84.39097501721193);
+
+            $('.editViewCard').css("display", "block");
+        };
+
+        // createToolTip = obj => {
+
+        //     let content = `<div class="md-form toolTipCard">`;
+
+        //     Object.keys(obj).map((header, i) => {
+        //         content += `<h4 class="routeToolTip">${header}:</h4>
+        //         <input value="${obj[header]}" type="text" class="tooltipText tooltip-form-control ${header}Input">`
+        //     });
+        //     content += `</div>`
+
+        //     return content;
+        // };
+
+
+        createToolTip = obj => {
+
+            let content = `<div class="md-form toolTipCard">`;
+            Object.keys(obj).map((header, i) => {
+
+                if (i % 2 === 0) {
+                    content += `<div class="col-md-6 lefty"> <h4 class="routeToolTip">${header}:</h4>
+                <input value="${obj[header]}" type="text" class="tooltipText tooltip-form-control ${header}Input"> </div>`
+                    $(".lefty").html(content);
+                    // console.log(true)
+                }
+                else {
+                    content +=
+                        `<div class="col-md-6 righty"> <h4 class="routeToolTip">${header}:</h4>
+                <input value="${obj[header]}" type="text" class="tooltipText tooltip-form-control ${header}Input"> </div>`
+                    $(".righty").html(content);
+                    // console.log(false)
+                }
+
+            });
+            content += `</div>`
+
+            return content;
+        };
+
+        renderInitialInputsAndViews();
+
+        // initializeStreetView({
+        //     lat: 33.74395178539481,
+        //     lng: -84.39097501721193
+        // });
+
+        $('.editViewButton').click(() => {
+            resetTabViews();
+            $('.editViewCard').css("display", "block");
+            $('.editViewCard').fadeIn(1000);
+        });
+
+        $('.jsonViewButton').click(() => {
+            resetTabViews();
+            $('.jsonCard').css("display", "block");
+            $('.jsonCard').fadeIn(1000);
+        });
+
+        $('.streetViewButton').click(() => {
+            resetTabViews();
+            $('.streetViewCard').css("display", "block");
+            $('.streetViewCard').fadeIn(1000);
+        });
+
+    });
+
+    //-//\
+</script>
